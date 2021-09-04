@@ -1,0 +1,24 @@
+{
+  "name": "thegalobot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manogalo/thegalobot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manogalo/thegalobot/issues"
+  },
+  "homepage": "https://github.com/manogalo/thegalobot#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "tmi.js": "^1.8.5"
+  }
+}
