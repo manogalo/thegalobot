@@ -54,7 +54,7 @@ function banBot(userId, channel) {
 				var i = 0;
 				var interval = setInterval(function() {
 					var nickname = response[i];
-					client.say(channel, ` /ban ${nickname}`);
+					client.say(channel, `/ban ${nickname}`);
 					i++;
 					if (i === response.length) clearInterval(interval)
 				}, 500);
