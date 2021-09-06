@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const tmi = require('tmi.js');
 const https = require('https');
+const http = require('http');
 
 const client = new tmi.Client({
 	connection: {
@@ -26,11 +27,14 @@ client.on('message', (channel, tags, message, self) => {
 
 	if (commandName === '!ban') {
 		client.say(channel, 'Ban command triggered!');
-		banBot(tags['user-id'], channel)
+		banBot(channel)
 	}
 });
 
-function banBot(userId, channel) {
+function banBot(channel) {
+	auth();
+	return;
+
 	https.get(process.env.BOT_LIST_URL, (res) => {
 		const { statusCode } = res;
 
@@ -63,4 +67,25 @@ function banBot(userId, channel) {
 			}
 		});
 	});
+}
+
+function auth() {
+	var token = '';
+	var rawData = '';
+	console.log('Entering auth method');
+	if (process.env.NODE_ENV !== 'production') {
+		http.get('http://localhost:3000/getToken', (res) => {
+			res.on('data', (chunk) => { rawData += chunk; });
+			res.on('end', () => {
+				try {
+					//var response = JSON.parse(rawData);
+					//token = response;
+					console.log(rawData);
+				} catch(e) {
+					console.error(e.message)
+				}
+			})
+		});
+	}
+	console.log('Exiting auth method');
 }
